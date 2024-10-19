@@ -1,0 +1,35 @@
+{
+  "status": "success",
+  "data": {
+    "panelOptions": [
+      {
+        "nombre": "Gestión de Usuarios",
+        "link": "/admin/usuarios"
+      },
+      {
+        "nombre": "Gestión de Roles",
+        "link": "/admin/roles"
+      },
+      {
+        "nombre": "Gestión de Comercios",
+        "link": "/admin/comercios"
+      },
+      {
+        "nombre": "Aprobación de Comercios",
+        "link": "/admin/solicitudes-comercios"
+      },
+      {
+        "nombre": "Informes y Estadísticas",
+        "link": "/admin/estadisticas"
+      },
+      {
+        "nombre": "Notificaciones",
+        "link": "/admin/notificaciones"
+      },
+      {
+        "nombre": "Configuración del Sistema",
+        "link": "/admin/configuracion"
+      }
+    ]
+  }
+}

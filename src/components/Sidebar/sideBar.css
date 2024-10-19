@@ -1,0 +1,22 @@
+/* src/components/Sidebar.css */
+.sidebar {
+  width: 240px;
+  position: fixed;
+  top: 4rem; /* Desplaza el Sidebar hacia abajo */
+  transition: all 0.3s ease; /* Agrega una transición suave */
+}
+
+.css-1lwhjos-MuiPaper-root-MuiDrawer-paper {
+  top: 4rem !important;
+}
+
+.sidebar .list-item {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 8px 16px; /* Ajusta el padding */
+}
+
+.sidebar .list-item:hover {
+  background-color: #f0f0f0; /* Color de fondo al pasar el mouse */
+}
