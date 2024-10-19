@@ -20,6 +20,7 @@ const routes = (
   <>
     <Route path="/login" element={<Login />} />
     <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
+    <Route path="/" element={<Navigate to="/registro-comercio" replace />} />
     <Route path="/admin/dashboard" element={ProtectedRouteWrapper(<Dashboard />)} />
     <Route path="/admin/usuarios" element={ProtectedRouteWrapper(<Usuarios />)} />
     <Route path="/admin/roles" element={ProtectedRouteWrapper(<Roles />)} />
