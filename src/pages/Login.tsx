@@ -3,14 +3,10 @@ import { useAuth0 } from "@auth0/auth0-react"
 import { Button, Container, Typography, Box } from "@mui/material"
 
 const Login = () => {
-  const { loginWithPopup } = useAuth0()
+  const { loginWithRedirect } = useAuth0()
 
-  const handleLogin = async () => {
-    try {
-      await loginWithPopup()
-    } catch (error) {
-      console.error("Error during login:", error)
-    }
+  const handleLogin = () => {
+    loginWithRedirect()
   }
   return (
     <Container component="main" maxWidth="xs">
