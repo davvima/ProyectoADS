@@ -1,9 +1,13 @@
 // src/hooks/useFetch.tsx
 import { useEffect, useState } from "react"
 import dashboardData from "../data/dashboardData.json"
+import solicitudes from "../data/solicitudes.json"
+import usuarios from "../data/usuarios.json"
 
 const dataFiles = {
   dashboardData: dashboardData,
+  solicitudes: solicitudes,
+  usuarios: usuarios,
 }
 
 export function useFetch(filename: keyof typeof dataFiles) {
@@ -18,7 +22,7 @@ export function useFetch(filename: keyof typeof dataFiles) {
       try {
         const jsonData = dataFiles[filename]
         console.log({ dataFiles, filename })
-        setData(jsonData.data)
+        setData(jsonData)
       } catch (err) {
         console.error(err)
         setError("Error al cargar los datos")

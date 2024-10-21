@@ -1,0 +1,50 @@
+[
+  {
+    "id": 101,
+    "nombre": "Juan",
+    "apellido": "Pérez",
+    "email": "juan.perez@correo.com",
+    "tipoUsuario": "recolector_urbano",
+    "estado": "activo"
+  },
+  {
+    "id": 102,
+    "nombre": "María",
+    "apellido": "Gómez",
+    "email": "maria.gomez@correo.com",
+    "tipoUsuario": "encargado_centro",
+    "estado": "inactivo"
+  },
+  {
+    "id": 103,
+    "nombre": "Carlos",
+    "apellido": "Ramírez",
+    "email": "carlos.ramirez@correo.com",
+    "tipoUsuario": "administrador",
+    "estado": "activo"
+  },
+  {
+    "id": 104,
+    "nombre": "Ana",
+    "apellido": "Fernández",
+    "email": "ana.fernandez@correo.com",
+    "tipoUsuario": "recolector_urbano",
+    "estado": "inactivo"
+  },
+  {
+    "id": 105,
+    "nombre": "Luis",
+    "apellido": "Martínez",
+    "email": "luis.martinez@correo.com",
+    "tipoUsuario": "encargado_centro",
+    "estado": "activo"
+  },
+  {
+    "id": 106,
+    "nombre": "Laura",
+    "apellido": "Díaz",
+    "email": "laura.diaz@correo.com",
+    "tipoUsuario": "administrador",
+    "estado": "activo"
+  }
+]

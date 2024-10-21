@@ -1,0 +1,8 @@
+.dashboardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 3rem;
+  max-width: 1900px;
+  margin: auto;
+}

@@ -1,8 +1,12 @@
 import React from "react"
-import { Typography } from "@mui/material"
+import Container from "../components/Container"
 
 const Estadisticas = () => {
-  return <Typography variant="h4">Página Estadisticas</Typography>
+  return (
+    <Container title="Estadísticas">
+      <div></div>
+    </Container>
+  )
 }
 
 export default Estadisticas

@@ -1,8 +1,12 @@
 import React from "react"
-import { Typography } from "@mui/material"
+import Container from "../components/Container"
 
 const Settings = () => {
-  return <Typography variant="h4">Página Settings</Typography>
+  return (
+    <Container title="Atracciones">
+      <div></div>
+    </Container>
+  )
 }
 
 export default Settings

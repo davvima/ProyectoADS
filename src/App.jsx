@@ -25,15 +25,17 @@ const App = () => {
         style={{
           position: "absolute",
           top: "4rem",
-          height: "calc(100vh - 4rem)",
-          width: "100vw",
+          width: "100%",
+          maxWidth: "100vw",
           display: "flex",
           flexDirection: "row",
           flexGrow: 1,
+          height: "calc(100vh - 4.4rem)",
+          overflowY: "scroll",
         }}
       >
         {isAdminRoute && <Sidebar open={sidebarOpen} />}
-        <main style={{ width: "100%", margin: "1rem" }}>
+        <main style={{ width: "100%", padding: "4rem 2 rem", background: "#F5F6FA" }}>
           {/* Rutas para el contenido principal */}
           <Routes>{routes}</Routes>
         </main>

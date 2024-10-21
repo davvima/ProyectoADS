@@ -1,12 +1,12 @@
 import React from "react"
 import Container from "../components/Container"
 
-const Notificaciones = () => {
+const GestionRoles = () => {
   return (
-    <Container title="Notificaciones">
+    <Container title="Gestión de roles">
       <div></div>
     </Container>
   )
 }
 
-export default Notificaciones
+export default GestionRoles

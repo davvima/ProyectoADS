@@ -35,7 +35,9 @@ const Sidebar = ({ open }: { open: boolean }) => {
         width: open ? 240 : 80,
         overflow: "hidden",
         transition: "width 0.3s",
-        background: "#f0f0f0",
+        background: "#fff",
+        position: "sticky",
+        top: "0",
       }}
     >
       <List>

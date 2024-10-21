@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import { Button, Stepper, Step, StepLabel, Typography } from "@mui/material"
 import ContentForm from "../components/RegistroComercio/ContentForm"
 import "../components/RegistroComercio/ContentForm.css"
+import Container from "../components/Container"
 
 const steps = ["Información del Comercio", "Datos del Propietario", "Confirmación"]
 
@@ -30,11 +31,8 @@ const RegistroComercio = () => {
   }
 
   return (
-    <div className="formulario-container">
+    <Container title="Formulario de registro de comercio">
       <section className="formulario-container__header">
-        <Typography variant="h1" gutterBottom>
-          Formulario de registro de comercio
-        </Typography>
         <Stepper activeStep={activeStep}>
           {steps.map((label) => (
             <Step key={label}>
@@ -56,7 +54,7 @@ const RegistroComercio = () => {
       {activeStep === 1 && <Button onClick={handleBack}>Atrás</Button>}
       {activeStep === 1 && <Button onClick={handleSubmit}>Enviar</Button>}
       {activeStep === 0 && <Button onClick={handleNext}>Siguiente</Button>}
-    </div>
+    </Container>
   )
 }
 
