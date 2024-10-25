@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "data": {
+    "solicitudId": 1,
+    "nombreComercio": "Cabañas del Mirador",
+    "razonSocial": "Cabañas del Mirador SRL",
+    "cuit": "30-12345678-9",
+    "direccion": "Calle Falsa 123",
+    "link_google_maps": "https://goo.gl/maps/example",
+    "link_whatsapp": "https://wa.me/123456789",
+    "fotos": [
+      "https://www.nonoturismo.gob.ar/wp-content/uploads/2021/11/La20Moradita2028329.jpg",
+      "https://www.nonoturismo.gob.ar/wp-content/uploads/2021/11/La20Moradita2028129-200x200.jpg",
+      "https://www.nonoturismo.gob.ar/wp-content/uploads/2021/11/La20Moradita2028229-200x200.jpg",
+      "https://www.nonoturismo.gob.ar/wp-content/uploads/2021/11/La20Moradita2028429-200x200.jpg",
+      "https://www.nonoturismo.gob.ar/wp-content/uploads/2021/11/La20Moradita2028429-200x200.jpg"
+    ],
+    "estado": "aprobado",
+    "descripcion": "Hermosas cabañas con vista panorámica al valle."
+  }
+}

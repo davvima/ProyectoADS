@@ -19,13 +19,13 @@ const theme = createTheme({
   palette: {
     primary: {
       main: "#F48F00",
-      "500": "#F48F0050",
+      "500": "#F48F0080",
     },
     secondary: {
       main: "#4AD991",
     },
     common: {
-      white: "#f2f2f2",
+      white: "#fff",
     },
     info: {
       main: "#fff",
@@ -36,7 +36,9 @@ const theme = createTheme({
     customColors: {
       yellow: "#FEC53D",
       blue: "#9B9AFF",
-      red: "#FF9066",
+      red: "#F73B00",
+      orange: "#FF9500",
+      green: "#008134",
     },
   },
   typography: {

@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@mui/material"
 import useFetch from "../hooks/useFetch"
-import TableBox from "../components/TableBox"
+import TableBox from "../components/Table/TableBox"
 import Container from "../components/Container"
 
 const Usuarios = () => {

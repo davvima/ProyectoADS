@@ -3,10 +3,12 @@ import { useEffect, useState } from "react"
 import dashboardData from "../data/dashboardData.json"
 import solicitudes from "../data/solicitudes.json"
 import usuarios from "../data/usuarios.json"
+import detalleSolicitud from "../data/detalleSolicitud.json"
 
 const dataFiles = {
   dashboardData: dashboardData,
   solicitudes: solicitudes,
+  detalleSolicitud: detalleSolicitud,
   usuarios: usuarios,
 }
 

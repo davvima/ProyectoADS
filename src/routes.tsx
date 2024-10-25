@@ -12,6 +12,7 @@ import Configuracion from "./pages/Configuracion"
 import RegistroComercio from "./pages/RegistroComercio"
 import Login from "./pages/Login"
 import ProtectedRoute from "./components/ProtectedRoute"
+import DetalleSolicitudes from "./components/Solicitudes/DetalleSolicitudes"
 
 // Función para crear rutas protegidas
 const ProtectedRouteWrapper = (element) => <ProtectedRoute>{element}</ProtectedRoute>
@@ -26,6 +27,7 @@ const routes = (
     <Route path="/admin/roles" element={<GestionRoles />} />
     <Route path="/admin/comercios" element={<Comercios />} />
     <Route path="/admin/solicitudes-comercios" element={<SolicitudesComercios />} />
+    <Route path="/admin/solicitudes-comercios/:solicitudId" element={<DetalleSolicitudes />} />
     <Route path="/admin/estadisticas" element={<Estadisticas />} />
     <Route path="/admin/notificaciones" element={<Notificaciones />} />
     <Route path="/admin/configuracion" element={<Configuracion />} />
