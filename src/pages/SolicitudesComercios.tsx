@@ -34,7 +34,7 @@ const SolicitudesComercios = () => {
   const [messageDefault, setMessageDefault] = useState({ message: "", modal: false })
 
   const theme = useTheme()
-  const { data: comercios, loading, error } = useFetch("solicitudes")
+  const { data: comercios, loading, error } = useFetch("/Tur_comercio/read")
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage)
