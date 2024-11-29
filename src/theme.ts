@@ -12,6 +12,9 @@ const theme = createTheme({
           padding: "3rem",
           maxWidth: "1900px",
           margin: "auto",
+          "@media (max-width:600px)": {
+            padding: "1rem",
+          },
         },
       },
     },
@@ -20,6 +23,7 @@ const theme = createTheme({
     primary: {
       main: "#F48F00",
       "500": "#F48F0080",
+      "600": "#f48f0033",
     },
     secondary: {
       main: "#4AD991",
@@ -50,13 +54,57 @@ const theme = createTheme({
       fontStyle: "normal",
       fontWeight: 700,
       lineHeight: "normal",
+      "@media (max-width:600px)": {
+        fontSize: "1.5rem",
+      },
     },
-    h4: {
+    h2: {
+      color: "#202224",
+      fontSize: "1.85rem",
+      fontStyle: "normal",
+      fontWeight: 600,
+      lineHeight: "normal",
+      "@media (max-width:600px)": {
+        fontSize: "1.4rem",
+      },
+    },
+    h3: {
       color: "#202224",
       fontSize: "1.25rem",
       fontStyle: "normal",
-      fontWeight: 400,
+      fontWeight: 600,
       lineHeight: "normal",
+      "@media (max-width:600px)": {
+        fontSize: "1rem",
+      },
+    },
+    h4: {
+      color: "#202224",
+      fontSize: "1rem",
+      fontStyle: "normal",
+      fontWeight: 600,
+      lineHeight: "normal",
+      "@media (max-width:600px)": {
+        fontSize: "0.875rem",
+      },
+    },
+    h5: {
+      color: "#202224",
+      fontSize: "1rem",
+      fontStyle: "normal",
+      fontWeight: 500,
+      lineHeight: "normal",
+      "@media (max-width:600px)": {
+        fontSize: "0.875rem",
+      },
+    },
+    body1: {
+      fontSize: "1rem",
+      fontStyle: "normal",
+      lineHeight: "normal",
+      "@media (max-width:600px)": {
+        fontSize: "0.875rem",
+      },
     },
   },
 })

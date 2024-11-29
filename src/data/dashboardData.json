@@ -11,8 +11,8 @@
         "link": "/admin/roles"
       },
       {
-        "nombre": "Gestión de Comercios",
-        "link": "/admin/comercios"
+        "nombre": "Gestión de Atracciones",
+        "link": "/admin/atracciones"
       },
       {
         "nombre": "Aprobación de Comercios",
@@ -25,6 +25,14 @@
       {
         "nombre": "Notificaciones",
         "link": "/admin/notificaciones"
+      },
+      {
+        "nombre": "Gestión de Videos",
+        "link": "/admin/videos"
+      },
+      {
+        "nombre": "Gestión de Centros de Reciclaje",
+        "link": "/admin/centros"
       },
       {
         "nombre": "Configuración del Sistema",

@@ -11,6 +11,10 @@
   min-height: 700px;
 }
 
+.formulario-container__step .MuiStepIcon-text {
+  fill: white;
+}
+
 .formulario-container__header {
   width: 100%;
   margin: 2rem 0;
@@ -34,6 +38,8 @@
 .formulario-container__confirmation {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
   width: 100%;
   padding: 0 20%;
@@ -49,6 +55,7 @@
   overflow: hidden;
   width: 7.5rem;
   height: 7.5rem;
+  cursor: grab;
 }
 
 .formulario-container__imagesUploadContainer,

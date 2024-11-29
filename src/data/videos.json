@@ -1,0 +1,35 @@
+{
+  "status": "success",
+  "videos": [
+    {
+      "id": 1,
+      "titulo": "Cuidado del Medio Ambiente",
+      "codigo_insercion": "https://www.youtube.com/embed/",
+      "es_principal": true
+    },
+    {
+      "id": 2,
+      "titulo": "Reciclaje de Plásticos",
+      "codigo_insercion": "https://www.youtube.com/embed/",
+      "es_principal": false
+    },
+    {
+      "id": 3,
+      "titulo": "Compostaje en Casa",
+      "codigo_insercion": "https://www.youtube.com/embed/",
+      "es_principal": false
+    },
+    {
+      "id": 4,
+      "titulo": "Uso Eficiente del Agua",
+      "codigo_insercion": "https://www.youtube.com/embed/",
+      "es_principal": false
+    },
+    {
+      "id": 5,
+      "titulo": "Energía Renovable para Todos",
+      "codigo_insercion": "https://www.youtube.com/embed/",
+      "es_principal": false
+    }
+  ]
+}

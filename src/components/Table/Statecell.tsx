@@ -13,7 +13,7 @@ const getColorForEstado = (estado) => {
   const theme = useTheme()
   // Encuentra el color correspondiente al estado
   for (const [color, estados] of Object.entries(estadoColores)) {
-    if (estados.includes(estado.toLowerCase())) {
+    if (estados.includes(estado?.toLowerCase())) {
       return theme.palette.customColors[color]
     }
   }

@@ -1,0 +1,60 @@
+{
+  "trazabilidad": [
+    {
+      "circuito": "Circuito Norte",
+      "recolector": "Juan Pérez",
+      "volumenRecolectado": { "PET": 1500, "Vidrio": 1000, "Aluminio": 500 },
+      "puntosVisitados": 20
+    },
+    {
+      "circuito": "Circuito Sur",
+      "recolector": "María Gómez",
+      "volumenRecolectado": { "PET": 1800, "Vidrio": 1200, "Aluminio": 600 },
+      "puntosVisitados": 22
+    }
+  ],
+  "actividadRecolectores": [
+    {
+      "recolector": "Juan Pérez",
+      "puntosVisitados": 20,
+      "volumenRecolectado": { "PET": 1500, "Vidrio": 1000, "Aluminio": 500 },
+      "horarioInicio": "08:00",
+      "horarioFin": "16:00"
+    },
+    {
+      "recolector": "María Gómez",
+      "puntosVisitados": 22,
+      "volumenRecolectado": { "PET": 1800, "Vidrio": 1200, "Aluminio": 600 },
+      "horarioInicio": "09:00",
+      "horarioFin": "17:00"
+    }
+  ],
+  "cumplimientoComercios": [
+    {
+      "comercio": "Cabañas del Sur",
+      "volumenSeparado": { "PET": 1500, "Vidrio": 1000 },
+      "faltasSeparacion": 2,
+      "alertas": ["No se escanearon bolsas en 2 puntos"]
+    },
+    {
+      "comercio": "Restaurante El Buen Sabor",
+      "volumenSeparado": { "PET": 1800, "Vidrio": 1200 },
+      "faltasSeparacion": 1,
+      "alertas": ["No se escaneó la bolsa el día 2023-01-05"]
+    }
+  ],
+  "recepcionCentrosReciclado": [
+    {
+      "centro": "Reciclados Sur",
+      "volumenReportado": { "PET": 1500, "Vidrio": 1000, "Aluminio": 500 },
+      "volumenValidado": { "PET": 1450, "Vidrio": 980, "Aluminio": 490 },
+      "discrepancias": ["PET: -50 litros", "Vidrio: -20 litros"]
+    },
+    {
+      "centro": "Reciclados Norte",
+      "volumenReportado": { "PET": 1800, "Vidrio": 1200 },
+      "volumenValidado": { "PET": 1750, "Vidrio": 1180 },
+      "discrepancias": ["PET: -50 litros", "Vidrio: -20 litros"]
+    }
+  ]
+}

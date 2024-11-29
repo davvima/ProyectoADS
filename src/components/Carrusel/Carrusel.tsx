@@ -15,11 +15,14 @@ const ImageContainer = styled(Box)(({ translateX }) => ({
   display: "flex",
   gap: "2rem",
   transition: "transform 0.5s ease",
-  transform: `translateX(-${translateX}%)`,
+  transform:
+    translateX == 100
+      ? `translateX(calc(-${translateX}% - 17rem ))`
+      : `translateX(-${translateX}%)`,
 }))
 
 const CarouselImage = styled(Box)(({ imgUrl }) => ({
-  flex: "0 0 66.66%", // Mostrar 2 imágenes completas y la mitad de la tercera
+  flex: "0 0 66.66%",
   backgroundImage: `url(${imgUrl})`,
   backgroundSize: "cover",
   backgroundPosition: "center",
@@ -41,7 +44,6 @@ const Carrusel = ({ images }) => {
 
   // Calcular el desplazamiento en porcentaje
   const translateX = index >= images.length ? 100 : (100 / images.length) * index
-  console.log({ index, translateX })
 
   return (
     <Box position="relative">
@@ -54,7 +56,7 @@ const Carrusel = ({ images }) => {
 
       <IconButton
         onClick={handleNext}
-        sx={{ position: "absolute", right: "1rem", top: "50%", transform: "translateY(-50%)" }}
+        sx={{ position: "absolute", right: "-1rem", top: "50%", transform: "translateY(-50%)" }}
       >
         <KeyboardArrowRight />
       </IconButton>

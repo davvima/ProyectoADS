@@ -19,6 +19,8 @@ import {
   BarChart,
   Notifications,
   Settings,
+  Movie,
+  HomeWork,
 } from "@mui/icons-material"
 import Container from "../components/Container"
 
@@ -29,7 +31,7 @@ const Dashboard = () => {
   const iconMap = {
     "Gestión de Usuarios": { icon: <People sx={{ fontSize: 40 }} />, color: palette.primary.main },
     "Gestión de Roles": { icon: <Group sx={{ fontSize: 40 }} />, color: palette.customColors.blue },
-    "Gestión de Comercios": {
+    "Gestión de Atracciones": {
       icon: <Store sx={{ fontSize: 40 }} />,
       color: palette.customColors.yellow,
     },
@@ -42,9 +44,17 @@ const Dashboard = () => {
       color: palette.secondary.main,
     },
     Notificaciones: { icon: <Notifications sx={{ fontSize: 40 }} />, color: palette.primary.main },
+    "Gestión de Videos": {
+      icon: <Movie sx={{ fontSize: 40 }} />,
+      color: palette.customColors.blue,
+    },
+    "Gestión de Centros de Reciclaje": {
+      icon: <HomeWork sx={{ fontSize: 40 }} />,
+      color: palette.customColors.yellow,
+    },
     "Configuración del Sistema": {
       icon: <Settings sx={{ fontSize: 40 }} />,
-      color: palette.customColors.blue,
+      color: palette.customColors.red,
     },
   }
 
@@ -58,21 +68,24 @@ const Dashboard = () => {
 
   return (
     <Container title="Panel de Administración">
-      <Box display="flex" flexWrap="wrap" justifyContent="space-between" rowGap="3rem">
+      <Box display="flex" flexWrap="wrap" justifyContent="space-between" rowGap="2rem">
         {data?.data?.panelOptions.map((option: { nombre: string; link: string }) => (
           <Box
             key={option.nombre}
-            width="30%"
-            minWidth="24rem"
-            maxWidth="40rem"
-            sx={{ justifyContent: "space-around" }}
+            sx={{
+              display: "flex",
+              justifyContent: "space-around",
+              width: { xs: "100%", sm: "30%" },
+              minWidth: { xs: "10rem", sm: "24rem" },
+              maxWidth: { xs: "90vw", sm: "40rem" },
+            }}
           >
-            <Link to={option.link} style={{ textDecoration: "none" }}>
+            <Link to={option.link} style={{ width: "100%", textDecoration: "none" }}>
               <Card
                 sx={{
                   boxShadow: "6px 6px 54px 0px rgba(0, 0, 0, 0.05)",
                   borderRadius: "0.875rem",
-                  height: "13.875rem",
+                  height: "10rem",
                   padding: "1.5rem",
                 }}
               >
@@ -81,8 +94,8 @@ const Dashboard = () => {
                     <Typography
                       sx={{
                         color: "black",
-                        fontSize: " 1.75rem",
-                        fontWeight: "700",
+                        fontSize: " 1.25rem",
+                        fontWeight: "500",
                         letterSpacing: "0.0625rem",
                         maxWidth: "232px",
                       }}
@@ -94,15 +107,15 @@ const Dashboard = () => {
                       style={{
                         width: "72px",
                         height: "72px",
-                        background: iconMap[option.nombre].color + "50",
-                        color: iconMap[option.nombre].color,
+                        background: iconMap[option.nombre]?.color + "50",
+                        color: iconMap[option.nombre]?.color,
                         borderRadius: "22px",
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
                       }}
                     >
-                      {iconMap[option.nombre].icon}
+                      {iconMap[option.nombre]?.icon}
                     </div>
                   </div>
                 </CardContent>

@@ -1,0 +1,95 @@
+{
+  "status": "success",
+  "data": [
+    {
+      "atraccionId": 1,
+      "nombre": "Cerro Nono",
+      "descripcion": "Un cerro hermoso para realizar caminatas",
+      "ubicacion": "Calle Principal 123, Nono",
+      "googleMaps": "https://maps.google.com/?q=cerro-nono",
+      "fotos": ["https://via.placeholder.com/150", "https://via.placeholder.com/150"],
+      "publicada": true
+    },
+    {
+      "atraccionId": 2,
+      "nombre": "Lago Escondido",
+      "descripcion": "Un lago en medio de la naturaleza",
+      "ubicacion": "Ruta Provincial 14, Valle Hermoso",
+      "googleMaps": "https://maps.google.com/?q=lago-escondido",
+      "fotos": ["https://via.placeholder.com/150", "https://via.placeholder.com/150"],
+      "publicada": false
+    },
+    {
+      "atraccionId": 3,
+      "nombre": "Cascada del Ángel",
+      "descripcion": "Cascada escondida entre montañas",
+      "ubicacion": "Paraje El Ángel, Nono",
+      "googleMaps": "https://maps.google.com/?q=cascada-del-angel",
+      "fotos": ["https://via.placeholder.com/150", "https://via.placeholder.com/150"],
+      "publicada": true
+    },
+    {
+      "atraccionId": 4,
+      "nombre": "Valle Encantado",
+      "descripcion": "Una reserva natural con senderos mágicos",
+      "ubicacion": "Av. Libertad 456, Villa Verde",
+      "googleMaps": "https://maps.google.com/?q=valle-encantado",
+      "fotos": ["https://via.placeholder.com/150", "https://via.placeholder.com/150"],
+      "publicada": true
+    },
+    {
+      "atraccionId": 5,
+      "nombre": "Bosque de Pinos",
+      "descripcion": "Bosque con extensos senderos para explorar",
+      "ubicacion": "Ruta Nacional 40, Los Árboles",
+      "googleMaps": "https://maps.google.com/?q=bosque-de-pinos",
+      "fotos": ["https://via.placeholder.com/150", "https://via.placeholder.com/150"],
+      "publicada": false
+    },
+    {
+      "atraccionId": 6,
+      "nombre": "Mirador del Sol",
+      "descripcion": "Mirador con una vista impresionante del valle",
+      "ubicacion": "Camino al Sol 321, Valle Alto",
+      "googleMaps": "https://maps.google.com/?q=mirador-del-sol",
+      "fotos": ["https://via.placeholder.com/150", "https://via.placeholder.com/150"],
+      "publicada": true
+    },
+    {
+      "atraccionId": 7,
+      "nombre": "Laguna Azul",
+      "descripcion": "Una laguna rodeada de montañas y vegetación",
+      "ubicacion": "Parque Natural Laguna Azul, Valle Frío",
+      "googleMaps": "https://maps.google.com/?q=laguna-azul",
+      "fotos": ["https://via.placeholder.com/150", "https://via.placeholder.com/150"],
+      "publicada": true
+    },
+    {
+      "atraccionId": 8,
+      "nombre": "Reserva El Ceibo",
+      "descripcion": "Reserva de flora y fauna autóctona",
+      "ubicacion": "Camino El Ceibo 543, Villa Ceibo",
+      "googleMaps": "https://maps.google.com/?q=reserva-el-ceibo",
+      "fotos": ["https://via.placeholder.com/150", "https://via.placeholder.com/150"],
+      "publicada": false
+    },
+    {
+      "atraccionId": 9,
+      "nombre": "Cueva del Indio",
+      "descripcion": "Cueva histórica con pinturas rupestres",
+      "ubicacion": "Camino a la Cueva, San Pedro",
+      "googleMaps": "https://maps.google.com/?q=cueva-del-indio",
+      "fotos": ["https://via.placeholder.com/150", "https://via.placeholder.com/150"],
+      "publicada": true
+    },
+    {
+      "atraccionId": 10,
+      "nombre": "Jardín de Cactus",
+      "descripcion": "Jardín botánico con especies de cactus",
+      "ubicacion": "Ruta Provincial 9, Desierto Verde",
+      "googleMaps": "https://maps.google.com/?q=jardin-de-cactus",
+      "fotos": ["https://via.placeholder.com/150", "https://via.placeholder.com/150"],
+      "publicada": false
+    }
+  ]
+}

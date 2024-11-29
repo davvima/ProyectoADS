@@ -1,0 +1,22 @@
+{
+  "materiales": [
+    {
+      "material_id": "123",
+      "nombre_material": "PET",
+      "volumen": 20,
+      "puntos": 10
+    },
+    {
+      "material_id": "456",
+      "nombre_material": "Vidrio",
+      "volumen": 30,
+      "puntos": 15
+    },
+    {
+      "material_id": "789",
+      "nombre_material": "Papel",
+      "volumen": 40,
+      "puntos": 5
+    }
+  ]
+}

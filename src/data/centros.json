@@ -1,0 +1,33 @@
+{
+  "status": "success",
+  "centros": [
+    {
+      "centroId": "12345",
+      "nombreCentro": "Reciclados Sur",
+      "direccion": "Calle Falsa 123",
+      "nombreEncargado": ["Juan Pérez"],
+      "telefonoEncargado": "+54 9 11 1234 5678"
+    },
+    {
+      "centroId": "67890",
+      "nombreCentro": "Reciclados Norte",
+      "direccion": "Avenida Siempreviva 742",
+      "nombreEncargado": ["María Gómez"],
+      "telefonoEncargado": "+54 9 11 9876 5432"
+    },
+    {
+      "centroId": "13579",
+      "nombreCentro": "EcoReciclajes",
+      "direccion": "Avenida Verde 101",
+      "nombreEncargado": ["Carlos Sánchez"],
+      "telefonoEncargado": "+54 9 11 5566 7788"
+    },
+    {
+      "centroId": "24680",
+      "nombreCentro": "Reciclados Centro",
+      "direccion": "Bulevar Azul 456",
+      "nombreEncargado": ["Ana Rodríguez"],
+      "telefonoEncargado": "+54 9 11 4433 2211"
+    }
+  ]
+}

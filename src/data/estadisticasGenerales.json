@@ -1,0 +1,38 @@
+{
+  "status": "success",
+  "message": "Estadísticas generales obtenidas exitosamente",
+  "data": {
+    "residuos_total_recolectados": "2500 Ton",
+    "recolectores_activos": 15,
+    "comercios_registrados": 120,
+    "atracciones_publicadas": 30,
+    "residuos_por_tipo": {
+      "PET": 1200,
+      "Vidrio": 800,
+      "Aluminio": 500
+    },
+    "comercios_por_estado": {
+      "pendientes": 10,
+      "aprobados": 90,
+      "rechazados": 20
+    }
+  },
+  "graficos": {
+    "residuos_por_tipo": {
+      "titulo": "Distribución de Residuos por Tipo",
+      "datos": {
+        "PET": 1200,
+        "Vidrio": 800,
+        "Aluminio": 500
+      }
+    },
+    "comercios_por_estado": {
+      "titulo": "Comercios por Estado",
+      "datos": {
+        "Pendientes": 10,
+        "Aprobados": 90,
+        "Rechazados": 20
+      }
+    }
+  }
+}

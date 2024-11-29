@@ -1,42 +1,97 @@
-// src/hooks/useFetch.tsx
 import { useEffect, useState } from "react"
+import atracciones from "../data/atracciones.json"
 import dashboardData from "../data/dashboardData.json"
+import detalleSolicitud from "../data/detalleSolicitud.json"
+import notificaciones from "../data/notificaciones.json"
+import roles from "../data/roles.json"
 import solicitudes from "../data/solicitudes.json"
 import usuarios from "../data/usuarios.json"
-import detalleSolicitud from "../data/detalleSolicitud.json"
+import videos from "../data/videos.json"
+import permisos from "../data/permisos.json"
+import estadisticas from "../data/estadisticasGenerales.json"
+import materiales from "../data/materiales.json"
+import centros from "../data/centros.json"
 
 const dataFiles = {
-  dashboardData: dashboardData,
-  solicitudes: solicitudes,
-  detalleSolicitud: detalleSolicitud,
-  usuarios: usuarios,
+  atracciones,
+  dashboardData,
+  detalleSolicitud,
+  notificaciones,
+  roles,
+  solicitudes,
+  usuarios,
+  videos,
+  permisos,
+  estadisticas,
+  materiales,
+  centros,
 }
 
-export function useFetch(filename: keyof typeof dataFiles) {
+interface FetchOptions {
+  method?: "GET" | "POST" | "PUT" | "DELETE"
+  body?: any
+  headers?: Record<string, string>
+}
+
+export function useFetch(initialResource?: keyof typeof dataFiles | string) {
   const [data, setData] = useState<any>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  useEffect(() => {
-    const fetchData = () => {
-      setLoading(true)
-      setError(null)
-      try {
-        const jsonData = dataFiles[filename]
-        console.log({ dataFiles, filename })
-        setData(jsonData)
-      } catch (err) {
-        console.error(err)
-        setError("Error al cargar los datos")
-      } finally {
-        setLoading(false)
+  const fetchData = async (endpoint: string, options: FetchOptions = { method: "GET" }) => {
+    setLoading(true)
+    setError(null)
+
+    try {
+      if (endpoint in dataFiles && options.method === "GET") {
+        // Archivos estáticos
+        setData(dataFiles[endpoint as keyof typeof dataFiles])
+      } else {
+        // Modo API real
+        const response = await fetch(endpoint, {
+          method: options.method || "GET",
+          headers: {
+            "Content-Type": "application/json",
+            ...options.headers,
+          },
+          body: options.body ? JSON.stringify(options.body) : null,
+        })
+
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status} - ${response.statusText}`)
+        }
+
+        const responseData = await response.json()
+        setData(responseData)
       }
+    } catch (err: any) {
+      setError(err.message || "Error al cargar los datos")
+    } finally {
+      setLoading(false)
     }
+  }
 
-    fetchData()
-  }, [filename])
+  useEffect(() => {
+    if (initialResource) {
+      fetchData(initialResource)
+    }
+  }, [initialResource])
 
-  return { data, loading, error }
+  const refetch = () => {
+    if (initialResource) {
+      fetchData(initialResource)
+    }
+  }
+
+  // Ejecución dinámica para `POST`, `PUT`, `DELETE` o `GET` a otros endpoints
+  const execute = (
+    endpoint: string,
+    method: "POST" | "PUT" | "DELETE" | "GET" = "GET",
+    body?: any,
+    headers?: Record<string, string>
+  ) => fetchData(endpoint, { method, body, headers })
+
+  return { data, loading, error, refetch, execute }
 }
 
 export default useFetch

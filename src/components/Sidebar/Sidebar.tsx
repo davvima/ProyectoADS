@@ -4,27 +4,31 @@ import { NavLink } from "react-router-dom"
 import { List, ListItem, ListItemText } from "@mui/material"
 import {
   People as UsersIcon,
-  Group as RolesIcon,
+  FolderShared as RolesIcon,
   Store as CommerceIcon,
   Assignment as ApprovalIcon,
   BarChart as ReportsIcon,
   Notifications as NotificationsIcon,
   Settings as SettingsIcon,
   Dashboard as DashboardIcon,
+  HomeWork as CentersIcon,
+  Movie,
 } from "@mui/icons-material"
 
 const panelOptions = [
   { nombre: "Dashboard", link: "/admin/dashboard", icon: <DashboardIcon /> },
-  { nombre: "Gestión de Usuarios", link: "/admin/usuarios", icon: <UsersIcon /> },
-  { nombre: "Gestión de Roles", link: "/admin/roles", icon: <RolesIcon /> },
-  { nombre: "Gestión de Comercios", link: "/admin/comercios", icon: <CommerceIcon /> },
   {
     nombre: "Aprobación de Comercios",
     link: "/admin/solicitudes-comercios",
     icon: <ApprovalIcon />,
   },
-  { nombre: "Informes y Estadísticas", link: "/admin/estadisticas", icon: <ReportsIcon /> },
+  { nombre: "Gestión de Atracciones", link: "/admin/atracciones", icon: <CommerceIcon /> },
+  { nombre: "Gestión de Usuarios", link: "/admin/usuarios", icon: <UsersIcon /> },
   { nombre: "Notificaciones", link: "/admin/notificaciones", icon: <NotificationsIcon /> },
+  { nombre: "Gestión de Videos", link: "/admin/videos", icon: <Movie /> },
+  { nombre: "Gestión de Roles", link: "/admin/roles", icon: <RolesIcon /> },
+  { nombre: "Informes y Estadísticas", link: "/admin/estadisticas", icon: <ReportsIcon /> },
+  { nombre: "Gestión de Centros de Reciclaje", link: "/admin/centros", icon: <CentersIcon /> },
   { nombre: "Configuración del Sistema", link: "/admin/configuracion", icon: <SettingsIcon /> },
 ]
 

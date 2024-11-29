@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "nombre": "Administrador",
+    "permisos": ["escanear_qr", "enviar_datos"]
+  },
+  {
+    "id": 2,
+    "nombre": "Recolector Urbano",
+    "permisos": ["escanear_qr", "enviar_datos"]
+  },
+  {
+    "id": 3,
+    "nombre": "Centro de Reciclaje",
+    "permisos": ["escanear_qr", "enviar_datos"]
+  },
+  {
+    "id": 4,
+    "nombre": "Aprobador",
+    "permisos": ["escanear_qr", "enviar_datos"]
+  }
+]

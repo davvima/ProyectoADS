@@ -13,9 +13,14 @@ const App = () => {
   const toggleSidebar = () => {
     setSidebarOpen((prev) => !prev)
   }
+  const isMobile = window?.matchMedia("(max-width: 600px)")?.matches
+  const showMenu = isMobile
+    ? location?.pathname.includes("/admin/dashboard")
+    : location?.pathname?.startsWith("/admin")
 
-  const isAdminRoute = location?.pathname?.startsWith("/admin")
-
+  if (location.pathname.startsWith("/backend")) {
+    return null
+  }
   return (
     <div style={{ display: "flex" }}>
       <CssBaseline />
@@ -34,7 +39,7 @@ const App = () => {
           overflowY: "scroll",
         }}
       >
-        {isAdminRoute && <Sidebar open={sidebarOpen} />}
+        {showMenu && <Sidebar open={sidebarOpen} />}
         <main style={{ width: "100%", padding: "4rem 2 rem", background: "#F5F6FA" }}>
           {/* Rutas para el contenido principal */}
           <Routes>{routes}</Routes>
