@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Typography, Box, TextField, Link, CircularProgress } from "@mui/material"
+import image from "../../assets/day66travel.png"
 import Button from "../../components/Button/Button"
 import Logo from "../../components/Logo"
 import { useNavigate } from "react-router-dom"
@@ -57,7 +58,7 @@ const Login = () => {
           flexDirection: "column",
           width: { xs: "100%", sm: "40%" },
           height: "100%",
-          gap: "2rem",
+          gap: "1rem",
           justifyContent: "start",
           alignItems: "start",
           padding: { xs: "2rem", sm: "5rem 2.5rem" },
@@ -105,7 +106,7 @@ const Login = () => {
         height="100%"
         sx={{ background: "#F5DBC4", display: { xs: "none", sm: "flex" } }}
       >
-        <img width="60%" src="path_to_image" alt="" />
+        <img width="60%" src={image} alt="" />
       </Box>
 
       {/* Modal de Registro */}
