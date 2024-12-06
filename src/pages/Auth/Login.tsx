@@ -17,26 +17,29 @@ const Login = () => {
   const handleLogin = () => {
     const storedEmail = localStorage.getItem("email")
     const storedPassword = localStorage.getItem("password")
+    if (!storedEmail || !storedPassword) {
+      localStorage.setItem("email", email)
+      localStorage.setItem("password", password)
+    }
     navigate("/registro-comercio")
   }
 
   const handleRegister = () => {
-    setOpen(true) // Abre el modal de registro
+    setOpen(true)
   }
 
   const handleClose = () => {
-    setOpen(false) // Cierra el modal de registro
+    setOpen(false)
   }
 
   const handleRegisterSubmit = () => {
-    setLoading(true) // Inicia el proceso de carga
+    setLoading(true)
     setTimeout(() => {
-      // Simulamos un tiempo de carga
       localStorage.setItem("email", email)
       localStorage.setItem("password", password)
-      setLoading(false) // Finaliza la carga
-      setSuccess(true) // Indica que el registro fue exitoso
-    }, 2000) // Simula un retraso de 2 segundos
+      setLoading(false)
+      setSuccess(true)
+    }, 2000)
   }
 
   return (
