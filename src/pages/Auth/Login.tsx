@@ -61,7 +61,7 @@ const Login = () => {
           gap: "1rem",
           justifyContent: "start",
           alignItems: "start",
-          padding: { xs: "2rem", sm: "5rem 2.5rem" },
+          padding: { xs: "2rem", sm: "3rem 2.5rem" },
         }}
       >
         <Logo width="9rem" />
