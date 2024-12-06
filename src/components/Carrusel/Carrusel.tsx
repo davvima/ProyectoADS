@@ -1,49 +1,54 @@
 import React, { useState } from "react"
 import { Box, IconButton, styled } from "@mui/material"
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material"
+import { BASE_URL } from "../../constants/url"
 
-const CarouselContainer = styled(Box)(({ theme }) => ({
+const CarouselContainer = styled(Box)({
   display: "flex",
   position: "relative",
   overflow: "hidden",
   width: "90%",
   margin: "1rem auto",
-}))
+})
 
-const ImageContainer = styled(Box)(({ translateX }) => ({
+const ImageContainer = styled(Box)<{ translateX: number }>(({ translateX }) => ({
   width: "100%",
   display: "flex",
   gap: "2rem",
   transition: "transform 0.5s ease",
-  transform:
-    translateX == 100
-      ? `translateX(calc(-${translateX}% - 17rem ))`
-      : `translateX(-${translateX}%)`,
+  transform: `translateX(-${translateX}%)`,
 }))
 
-const CarouselImage = styled(Box)(({ imgUrl }) => ({
+const CarouselImage = styled("img")({
   flex: "0 0 66.66%",
-  backgroundImage: `url(${imgUrl})`,
-  backgroundSize: "cover",
-  backgroundPosition: "center",
   height: "22rem",
   maxWidth: "22rem",
   borderRadius: "2rem",
-}))
+  objectFit: "cover",
+  objectPosition: "center",
+})
 
-const Carrusel = ({ images }) => {
+const Carrusel = ({ images }: { images: string[] }) => {
   const [index, setIndex] = useState(0)
+  const [validImages, setValidImages] = useState(images)
+
+  const handleError = (index: number) => {
+    // Excluir la imagen rota
+    setValidImages((prev) => prev.filter((_, i) => i !== index))
+  }
 
   const handleNext = () => {
-    setIndex((prevIndex) => (prevIndex >= images.length ? images.length : prevIndex + 1))
+    setIndex((prevIndex) => (prevIndex + 1) % validImages.length)
   }
 
   const handlePrev = () => {
-    setIndex((prevIndex) => (prevIndex === 0 ? 0 : prevIndex - 1))
+    setIndex((prevIndex) => (prevIndex === 0 ? validImages.length - 1 : prevIndex - 1))
   }
 
   // Calcular el desplazamiento en porcentaje
-  const translateX = index >= images.length ? 100 : (100 / images.length) * index
+  const translateX = (100 / validImages.length) * index
+
+  if (!images || !Array.isArray(images) || validImages.length === 0) return null
 
   return (
     <Box position="relative">
@@ -63,8 +68,13 @@ const Carrusel = ({ images }) => {
 
       <CarouselContainer>
         <ImageContainer translateX={translateX}>
-          {images.map((image, i) => (
-            <CarouselImage key={i} imgUrl={image} />
+          {validImages.map((image, i) => (
+            <CarouselImage
+              key={i}
+              src={`${BASE_URL}/assets/images/${image}`}
+              alt={`Imagen ${i + 1}`}
+              onError={() => handleError(i)} // Maneja imágenes rotas
+            />
           ))}
         </ImageContainer>
       </CarouselContainer>

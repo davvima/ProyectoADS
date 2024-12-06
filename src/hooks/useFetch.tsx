@@ -4,7 +4,6 @@ import dashboardData from "../data/dashboardData.json"
 import detalleSolicitud from "../data/detalleSolicitud.json"
 import notificaciones from "../data/notificaciones.json"
 import roles from "../data/roles.json"
-import solicitudes from "../data/solicitudes.json"
 import usuarios from "../data/usuarios.json"
 import videos from "../data/videos.json"
 import permisos from "../data/permisos.json"
@@ -18,7 +17,6 @@ const dataFiles = {
   detalleSolicitud,
   notificaciones,
   roles,
-  solicitudes,
   usuarios,
   videos,
   permisos,
@@ -33,9 +31,11 @@ interface FetchOptions {
   headers?: Record<string, string>
 }
 
+const BASE_URL = "https://recreas.net/backend"
+
 export function useFetch(initialResource?: keyof typeof dataFiles | string) {
   const [data, setData] = useState<any>(null)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
   const fetchData = async (endpoint: string, options: FetchOptions = { method: "GET" }) => {
@@ -48,24 +48,37 @@ export function useFetch(initialResource?: keyof typeof dataFiles | string) {
         setData(dataFiles[endpoint as keyof typeof dataFiles])
       } else {
         // Modo API real
-        const response = await fetch(endpoint, {
+        const url = endpoint.startsWith("http") ? endpoint : BASE_URL + endpoint
+        const response = await fetch(url, {
           method: options.method || "GET",
-          headers: {
-            "Content-Type": "application/json",
-            ...options.headers,
-          },
-          body: options.body ? JSON.stringify(options.body) : null,
+          headers:
+            options.body instanceof FormData
+              ? {}
+              : {
+                  "Content-Type": "application/json",
+                  ...(options.headers || {}),
+                },
+          body: options.body instanceof FormData ? options.body : JSON.stringify(options.body),
         })
+        console.log({ responsefetch: response })
 
         if (!response.ok) {
-          throw new Error(`Error: ${response.status} - ${response.statusText}`)
+          let errorDetails = `Error ${response.status} ${response.statusText}:${response.type}`
+          console.error(`Error en solicitud ${options.method} ${endpoint}`, errorDetails)
+          return response
         }
-
-        const responseData = await response.json()
-        setData(responseData)
+        console.log("response.status", response.status)
+        try {
+          const responseData = await response.json()
+          setData(() => responseData)
+          return responseData
+        } catch {
+          return response
+        }
       }
     } catch (err: any) {
-      setError(err.message || "Error al cargar los datos")
+      console.log("entro al catch")
+      setError(() => err || "Error al cargar los datos")
     } finally {
       setLoading(false)
     }
@@ -77,13 +90,13 @@ export function useFetch(initialResource?: keyof typeof dataFiles | string) {
     }
   }, [initialResource])
 
-  const refetch = () => {
-    if (initialResource) {
-      fetchData(initialResource)
+  const refetch = (refetchResource?: string) => {
+    const endpoint = refetchResource ?? initialResource
+    if (endpoint) {
+      fetchData(endpoint)
     }
   }
 
-  // Ejecución dinámica para `POST`, `PUT`, `DELETE` o `GET` a otros endpoints
   const execute = (
     endpoint: string,
     method: "POST" | "PUT" | "DELETE" | "GET" = "GET",

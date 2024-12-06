@@ -9,6 +9,7 @@ interface CustomButtonProps {
   startIcon?: any
   variant?: OverridableStringUnion<"text" | "outlined" | "contained", ButtonProps["variant"]>
   sx?: SxProps
+  disabled?: boolean
 }
 
 function Button({
@@ -18,9 +19,11 @@ function Button({
   variant = "contained",
   startIcon = null,
   sx = {},
+  disabled = false,
 }: CustomButtonProps) {
   return (
     <ButtonMaterial
+      disabled={disabled}
       variant={variant}
       startIcon={startIcon}
       sx={{

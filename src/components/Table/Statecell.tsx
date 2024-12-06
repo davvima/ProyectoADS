@@ -20,11 +20,11 @@ const getColorForEstado = (estado) => {
   return "gray" // Color por defecto si el estado no coincide
 }
 
-const StateCell = ({ estado }) => {
+const StateCell = ({ estado, sx }: { estado: string; sx?: any }) => {
   const bgColor = getColorForEstado(estado)
 
   return (
-    <TableCell>
+    <TableCell sx={sx}>
       <Typography
         sx={{
           fontWeight: 700,

@@ -1,4 +1,4 @@
-const validateInputs = (formData) => {
+const validateInputs = (formData, dispatch) => {
   const errors: any = {}
 
   // Validación de comercioNumero (Requerido)
@@ -21,14 +21,14 @@ const validateInputs = (formData) => {
 
   // Validación de email (Formato válido)
   const emailRegex = /\S+@\S+\.\S+/
-  if (!formData.email) {
-    errors.email = "El email es obligatorio."
-  } else if (!emailRegex.test(formData.email)) {
-    errors.email = "Por favor ingresa un email válido."
+  if (!formData.mail) {
+    errors.mail = "El email es obligatorio."
+  } else if (!emailRegex.test(formData.mail)) {
+    errors.mail = "Por favor ingresa un email válido."
   }
 
   // Validación de teléfono (Formato válido)
-  const phoneRegex = /^[+]?[0-9]{1,4}?[-.\s]?[0-9]{1,4}[-.\s]?[0-9]{1,4}[-.\s]?[0-9]{1,4}$/
+  const phoneRegex = /^[0-9]+$/
   if (!formData.telefono) {
     errors.telefono = "El teléfono de contacto es obligatorio."
   } else if (!phoneRegex.test(formData.telefono)) {
@@ -66,10 +66,11 @@ const validateInputs = (formData) => {
   }
 
   // Validación de DDescripción (Requerido)
-  if (!formData.description) {
-    errors.description = "La descripción es obligatoria."
+  if (!formData.descripcion) {
+    errors.descripcion = "La descripción es obligatoria."
   }
 
+  dispatch({ type: "SET_ERRORS", payload: errors })
   return errors
 }
 

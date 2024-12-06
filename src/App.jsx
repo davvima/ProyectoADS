@@ -18,7 +18,7 @@ const App = () => {
     ? location?.pathname.includes("/admin/dashboard")
     : location?.pathname?.startsWith("/admin")
 
-  if (location.pathname.startsWith("/backend")) {
+  if (location.pathname.startsWith("/backend") || location.pathname.startsWith("/assests")) {
     return null
   }
   return (

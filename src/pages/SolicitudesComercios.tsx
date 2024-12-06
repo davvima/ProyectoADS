@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import {
   Table,
   TableBody,
@@ -26,15 +26,43 @@ import { Link } from "react-router-dom"
 import { useTheme } from "@emotion/react"
 import Filters from "../components/Table/Filters"
 import Button from "../components/Button/Button"
+import CircularLoading from "../components/Utils/CircularLoading"
+
+interface Comercios {
+  estado: string
+  fechaSolicitud: string
+  nombreComercio: string
+  solicitudId: string
+}
 
 const SolicitudesComercios = () => {
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(5)
-  const [selectedStatus, setSelectedStatus] = useState("Todos")
+  const [selectedStatus, setSelectedStatus] = useState<string>("select")
   const [messageDefault, setMessageDefault] = useState({ message: "", modal: false })
+  const [filteredComercios, setFilteredComercios] = useState<Comercios>()
 
   const theme = useTheme()
-  const { data: comercios, loading, error } = useFetch("/Tur_comercio/read")
+  const {
+    data: comercios,
+    loading,
+    error,
+    refetch,
+  } = useFetch("https://recreas.net/backend/Tur_comercio/readAll?idCate=0")
+  console.log({ comercios, filteredComercios })
+
+  useEffect(() => {
+    if (!selectedStatus || selectedStatus === "select") return
+    try {
+      refetch(`https://recreas.net/backend/Tur_comercio/readAll?idCate=${selectedStatus}`)
+    } catch (error) {
+      console.error(error)
+    }
+  }, [selectedStatus])
+
+  useEffect(() => {
+    setFilteredComercios(comercios)
+  }, [comercios])
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage)
@@ -51,14 +79,8 @@ const SolicitudesComercios = () => {
 
   const handleMessageConfiguration = (event) => {}
 
-  if (loading) return <p>Cargando...</p>
-  if (error) return <p>Error: {error}</p>
-
-  // Filtrar comercios por estado seleccionado
-  const filteredComercios =
-    selectedStatus === "Todos"
-      ? comercios
-      : comercios.filter((comercio) => comercio.estado === selectedStatus)
+  if (loading) return <CircularLoading />
+  // if (error) return <p>Error: {error}</p>
 
   return (
     <Container title="Aprobación de solicitudes">
@@ -76,19 +98,22 @@ const SolicitudesComercios = () => {
             onChange={handleStatusChange}
             sx={{ "& .MuiSelect-nativeInput": { border: "none" } }}
           >
-            <MenuItem value="Todos">Estado</MenuItem>
-            <MenuItem value="aprobado">Aprobado</MenuItem>
-            <MenuItem value="rechazado">Rechazado</MenuItem>
-            <MenuItem value="pendiente">Pendiente</MenuItem>
+            <MenuItem value="0" defaultChecked>
+              Todos
+            </MenuItem>
+            <MenuItem value="1">Atracciones</MenuItem>
+            <MenuItem value="2">Alojamiento</MenuItem>
+            <MenuItem value="3">Gastronomia</MenuItem>
+            <MenuItem value="4">Comercio</MenuItem>
           </Select>
         </Filters>
-        <Button
+        {/* <Button
           variant="contained"
           sx={{ background: "#F48F007d" }}
           onClick={() => setMessageDefault({ ...messageDefault, modal: true })}
         >
           Configurar mensajes
-        </Button>
+        </Button> */}
       </Box>
 
       <TableBox>
@@ -103,7 +128,7 @@ const SolicitudesComercios = () => {
             </TableHead>
             <TableBody>
               {filteredComercios
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((comercio) => (
                   <Link
                     to={`/admin/solicitudes-comercios/${comercio.solicitudId}`}
@@ -123,7 +148,7 @@ const SolicitudesComercios = () => {
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          count={filteredComercios.length} // Cambiar a filteredComercios
+          count={filteredComercios?.length} // Cambiar a filteredComercios
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

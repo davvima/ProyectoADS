@@ -1,52 +1,94 @@
-import React, { useState } from "react"
+import React, { useRef } from "react"
 import { Button, Stepper, Step, StepLabel, Box } from "@mui/material"
 import ContentForm from "../components/RegistroComercio/ContentForm"
 import Container from "../components/Container"
 import useFetch from "../hooks/useFetch"
 import validateInputs from "../modules/validateInputs"
+
 import "../components/RegistroComercio/ContentForm.css"
+import { FormProvider, useFormContext } from "../context/FormContext"
+import CircularLoading from "../components/Utils/CircularLoading"
 
 const steps = ["Información del Comercio", "Datos del Propietario", "Confirmación"]
 
 const RegistroComercio = () => {
-  const [activeStep, setActiveStep] = useState(0)
-  const [formData, setFormData] = useState({
-    confirmacion: false,
-  })
-  const [errors, setErrors] = useState<any>({})
-  const { execute } = useFetch()
+  const { error, execute, loading } = useFetch()
+  const { state, dispatch } = useFormContext()
 
+  const comercioNumeroRef = useRef<HTMLInputElement>(null)
+  const { activeStep, formData, errors, action } = state
   const handleNext = () => {
-    setActiveStep((prev) => prev + 1)
+    const validationErrors = validateInputs(formData, dispatch)
+    dispatch({ type: "SET_ERRORS", payload: validationErrors })
+    dispatch({
+      type: "SET_VISITED_FIELDS",
+      payload: [
+        "razonSocial",
+        "comercioNumero",
+        "cuit",
+        "direccion",
+        "nombreFantasia",
+        "googleMaps",
+        "whatsapp",
+        "dni",
+        "responsableNombre",
+        "mail",
+        "telefono",
+      ],
+    })
+    if (Object.keys(validationErrors).length <= 1)
+      dispatch({ type: "SET_ACTIVE_STEP", payload: activeStep + 1 })
   }
 
   const handleBack = () => {
-    setActiveStep((prev) => prev - 1)
+    dispatch({ type: "SET_ACTIVE_STEP", payload: activeStep - 1 })
   }
 
   const handleSubmit = async () => {
-    const validateErrors = validateInputs(formData)
-    setErrors(validateErrors)
+    if (loading) return
+    const validationErrors = validateInputs(formData, dispatch)
+    dispatch({ type: "SET_ERRORS", payload: validationErrors })
 
-    if (Object.keys(validateErrors).length === 0) {
+    if (Object.keys(validationErrors).length === 0) {
       try {
-        const response: any = await execute("/backend", "POST", formData, {
-          "Content-Type": "application/json",
+        const formDataToSend = new FormData()
+        Object.entries(formData).forEach(([key, value]) => {
+          if (key === "imagenes" && Array.isArray(value) && comercioNumeroRef.current) {
+            const fileInput = comercioNumeroRef.current
+            const files = fileInput?.files
+            if (files && files.length > 0) {
+              for (const file of files) {
+                console.log({ file })
+                formDataToSend.append("images", file, file.name)
+              }
+            } else {
+              console.warn("No se seleccionaron archivos.")
+            }
+          } else if (key !== "imagenes") {
+            formDataToSend.append(key, value as string)
+          }
         })
+        for (const [key, value] of formDataToSend.entries()) {
+          console.log(`${key}:`, value)
+        }
+        const response =
+          action === "create"
+            ? await execute("/Tur_comercio/insert", "POST", formDataToSend)
+            : await execute("/Tur_comercio/update", "POST", formDataToSend)
 
-        if (response.status === "success") {
-          setActiveStep((prev) => prev + 1)
+        if (response && !response?.message?.toLowerCase()?.includes("error")) {
+          dispatch({ type: "SET_ACTIVE_STEP", payload: activeStep + 1 })
         } else {
-          console.error("Error en la respuesta del servidor:", response.message)
+          console.error("Error en la respuesta del servidor:", response)
         }
       } catch (error) {
         console.error("Error al realizar la solicitud:", error)
       }
     } else {
-      console.log("Hay errores en el formulario:", validateErrors)
+      console.log("Hay errores en el formulario:", errors)
     }
   }
-
+  console.log({ loading })
   return (
     <Container title="Formulario de registro de comercio">
       <Box className="formulario-container">
@@ -60,16 +102,7 @@ const RegistroComercio = () => {
           </Stepper>
         </section>
 
-        <ContentForm
-          activeStep={activeStep}
-          formData={formData}
-          errors={errors}
-          setFormData={setFormData}
-          steps={steps}
-          handleBack={handleBack}
-          handleNext={handleNext}
-          handleSubmit={handleSubmit}
-        />
+        <ContentForm comercioNumeroRef={comercioNumeroRef} />
       </Box>
       <Box sx={{ display: "flex", gap: "2rem", justifyContent: "end" }}>
         {activeStep === 1 && (
@@ -88,19 +121,33 @@ const RegistroComercio = () => {
           </Button>
         )}
         {activeStep === 1 && (
-          <Button
-            variant="contained"
-            sx={{
-              width: "20rem",
-              height: "4rem",
-              borderRadius: "20rem",
-              alignSelf: "end",
-              color: "white",
-            }}
-            onClick={handleSubmit}
-          >
-            Enviar
-          </Button>
+          <>
+            {loading ? (
+              <Box
+                sx={{
+                  position: "relative",
+                  width: "20rem",
+                  height: "4rem",
+                }}
+              >
+                <CircularLoading />
+              </Box>
+            ) : (
+              <Button
+                variant="contained"
+                sx={{
+                  width: "20rem",
+                  height: "4rem",
+                  borderRadius: "20rem",
+                  alignSelf: "end",
+                  color: "white",
+                }}
+                onClick={handleSubmit}
+              >
+                Enviar
+              </Button>
+            )}
+          </>
         )}
         {activeStep === 0 && (
           <Button
@@ -122,4 +169,12 @@ const RegistroComercio = () => {
   )
 }
 
-export default RegistroComercio
+const FormWithContext = () => {
+  return (
+    <FormProvider>
+      <RegistroComercio />
+    </FormProvider>
+  )
+}
+
+export default FormWithContext
