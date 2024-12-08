@@ -359,9 +359,9 @@ const DetalleSolicitudes = () => {
       >
         <Alert severity={success ? "success" : "error"}>
           {error
-            ? `Error al ${actionType === "Aprobada" ? "aprobar" : "rechazar"} la solicitud`
+            ? `Error al ${actionType} la solicitud`
             : success
-              ? `La solicitud ha sido ${actionType === "Aprobada" ? "aprobada" : "rechazada"} exitosamente.`
+              ? `La solicitud ha sido ${actionType === "aprobar" ? "aprobada" : "rechazada"} exitosamente.`
               : ""}
         </Alert>
       </Snackbar>
